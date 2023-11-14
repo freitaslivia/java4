@@ -61,7 +61,7 @@ public class VistoriasApi {
 			this.cadastrarVistoria.cadastrar(vistoria.isRenovacao(), vistoria.getColeta1(), vistoria.getColeta2(), 
 					vistoria.getColeta3(), vistoria.getColeta4(), vistoria.getColeta5(),
 					vistoria.getCpf(), vistoria.getNumeroDeSerie());
-			return this.obterVistoriaPorCpf(vistoria.getCpf());
+			return Response.created(new URI("vistorias/" + vistoria.getCpf())).build();
 			
 		} catch(Exception ex) {
 			return Response.serverError().entity(ex.getMessage()).build();
