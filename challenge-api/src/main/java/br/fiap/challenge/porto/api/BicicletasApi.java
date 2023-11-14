@@ -52,7 +52,7 @@ public class BicicletasApi {
 		try {
 			this.cadastrarBicicleta.cadastrar(bicicleta.getNumeroDeSerie(), bicicleta.getAno(), bicicleta.getMarca(),
 					bicicleta.getModelo(), bicicleta.getValor(), bicicleta.getCpf());
-			return this.obterBicicletaPorNumeroDeSerie(bicicleta.getNumeroDeSerie());
+			return Response.created(new URI("bicicletas/" + bicicleta.getNumeroDeSerie())).build();
 
 		} catch (Exception ex) {
 			return Response.serverError().entity(ex.getMessage()).build();
@@ -77,20 +77,6 @@ public class BicicletasApi {
 			return Response.status(Response.Status.NOT_FOUND).entity("Bicicleta não encontrado").build();
 		}
 	}
-
-	/*
-	 * @GET
-	 * 
-	 * @Path("{numeroDeSerie}") public Response
-	 * obterBicletaNumeroDeSerie(@PathParam("numeroDeSerie") String numeroDeSerie,
-	 * int idCliente) { //Cliente cliente = cliente.getIdCliente().toString();
-	 * Bicicleta bicicleta =
-	 * this.repositorioBicicletas.buscarPorNumeroDeSerie(numeroDeSerie, idCliente);
-	 * if (bicicleta != null) { return Response.ok(bicicleta.toString()).build(); }
-	 * else { return
-	 * Response.status(Response.Status.NOT_FOUND).entity("Bicicleta não encontrado")
-	 * .build(); } }
-	 */
 
 	/*
 	 * Para testar o get coloque essa url:
