@@ -62,7 +62,7 @@ public class ClientesApi {
 			
 			this.cadastrarCliente.cadastrar(cliente.getNome(), cliente.getEmail(),
 					cliente.getCpf());
-			return this.obterClientePorCpf(cliente.getCpf());
+			return Response.created(new URI("clientes/" + cliente.getCpf())).build();
 			
 		} catch (Exception ex) {
 			return Response.serverError().entity(ex.getMessage()).build();
